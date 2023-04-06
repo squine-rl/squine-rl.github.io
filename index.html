@@ -1,5 +1,39 @@
+<!DOCTYPE html>
 <html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>    
+</head>
+ 
 <body>
-<h1>Hello World</h1>
+    <div id="contents">
+        <a href="javascript:void(0);" id="start_gps">≫GPS情報取得を開始する</a>
+        
+        <table>
+        <tr>
+        <th>緯度</th>
+        <td><span id="latitude"></span></td>
+        <th>経度</th>
+        <td><span id="longitude"></span></td>
+        </tr>
+        </table>
+        
+        </div>
 </body>
+<script>
+$(function(){
+	$('#start_gps').click(function(){
+		navigator.geolocation.watchPosition(
+			function(position){
+				$('#latitude').html(position.coords.latitude); //緯度
+				$('#longitude').html(position.coords.longitude); //経度
+
+			}
+		);
+	});
+});
+</script>
+<style>
+
+</style>
 </html>
