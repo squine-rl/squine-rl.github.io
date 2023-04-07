@@ -1,6 +1,40 @@
-
+<!DOCTYPE html>
 <html>
+<head>
+    <meta charset="utf-8">
+</head>
+ 
 <body>
-<h1>Hello World</h1>
+    <a href="#" id="get_gps">get GPS coordinates</a>
+    
+    <table>
+    <tr>
+    <th>latitude</th>
+    <td><span id="latitude"></span></td>
+    <th>longitude</th>
+    <td><span id="longitude"></span></td>
+    </tr>
+    </table>
+
 </body>
+
+<script>
+document.getElementById("get_gps").onclick = function(){
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+};
+
+function successCallback(position){
+    var latitude = position.coords.latitude;
+    document.getElementById("latitude").innerHTML = latitude;
+    var longitude = position.coords.longitude;
+    document.getElementById("longitude").innerHTML = longitude;
+};
+
+function errorCallback(error){
+    alert("Unable to get current position");
+};
+</script>
+<style>
+
+</style>
 </html>
